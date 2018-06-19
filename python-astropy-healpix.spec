@@ -4,7 +4,7 @@
 
 Name:           python-%{srcname}
 Version:        0.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        %{sum}
 
 License:        BSD
@@ -63,6 +63,9 @@ rm -rf %{buildroot}%{python3_sitearch}/.hypothesis
 %{python3_sitearch}/%{modname}*egg-info
 
 %changelog
+* Tue Jun 19 2018 Miro Hrončok <mhroncok@redhat.com> - 0.2-2
+- Rebuilt for Python 3.7
+
 * Sat Mar 17 2018 Christian Dersch <lupinix@mailbox.org> - 0.2-1
 - initial package
 
