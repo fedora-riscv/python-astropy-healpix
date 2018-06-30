@@ -43,6 +43,8 @@ Requires:       python3-matplotlib
 %autosetup -n %{srcname}-%{version}
 # Delete pre-cythonized files, we do that by ourself to use Fedora Cython
 find . -name *.pyx -print0 | sed "s/pyx/c/g" | xargs -0 rm
+# Force Cython re-run
+echo "cython_version = 'unknown'" > astropy_healpix/cython_version.py
 
 %build
 %py3_build
