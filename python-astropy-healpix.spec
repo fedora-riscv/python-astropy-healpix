@@ -4,12 +4,12 @@
 
 Name:           python-%{srcname}
 Version:        0.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        %{sum}
 
 License:        BSD
 URL:            https://pypi.python.org/pypi/%{srcname}
-Source0:        https://github.com/astropy/%{srcname}/archive/v%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/a/%{srcname}/%{srcname}-%{version}.tar.gz
 
 BuildRequires:  python3-astropy
 BuildRequires:  python3-Cython
@@ -41,6 +41,8 @@ Requires:       python3-matplotlib
 
 %prep
 %autosetup -n %{srcname}-%{version}
+# Delete pre-cythonized files, we do that by ourself to use Fedora Cython
+find . -name *.pyx -print0 | sed "s/pyx/c/g" | xargs -0 rm
 
 %build
 %py3_build
@@ -63,6 +65,9 @@ rm -rf %{buildroot}%{python3_sitearch}/.hypothesis
 %{python3_sitearch}/%{modname}*egg-info
 
 %changelog
+* Sat Jun 30 2018 Christian Dersch <lupinix@mailbox.org> - 0.2-4
+- Use PyPI tar and delete the Cythonized code
+
 * Sat Jun 30 2018 Christian Dersch <lupinix@mailbox.org> - 0.2-3
 - Use GitHub tar instead of PyPI one (as GitHub one is not Cythonized)
 
