@@ -4,12 +4,12 @@
 
 Name:           python-%{srcname}
 Version:        0.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        %{sum}
 
 License:        BSD
 URL:            https://pypi.python.org/pypi/%{srcname}
-Source0:        https://files.pythonhosted.org/packages/source/a/%{srcname}/%{srcname}-%{version}.tar.gz
+Source0:        https://github.com/astropy/%{srcname}/archive/v%{version}.tar.gz
 
 BuildRequires:  python3-astropy
 BuildRequires:  python3-Cython
@@ -63,6 +63,9 @@ rm -rf %{buildroot}%{python3_sitearch}/.hypothesis
 %{python3_sitearch}/%{modname}*egg-info
 
 %changelog
+* Sat Jun 30 2018 Christian Dersch <lupinix@mailbox.org> - 0.2-3
+- Use GitHub tar instead of PyPI one (as GitHub one is not Cythonized)
+
 * Tue Jun 19 2018 Miro Hrončok <mhroncok@redhat.com> - 0.2-2
 - Rebuilt for Python 3.7
 
