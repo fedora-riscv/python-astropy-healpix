@@ -58,6 +58,7 @@ py.test-%{python3_version} %{modname}
 popd
 # Hypothesis tests creates some files in sitearch... we remove them now
 rm -rf %{buildroot}%{python3_sitearch}/.hypothesis
+rm -rf %{buildroot}%{python3_sitearch}/.pytest_cache
 
 # Note that there is no %%files section for the unversioned python module if we are building for several python runtimes
 %files -n python3-%{srcname}
