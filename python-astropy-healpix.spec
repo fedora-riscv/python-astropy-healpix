@@ -4,7 +4,7 @@
 
 Name:           python-%{srcname}
 Version:        0.2
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        %{sum}
 
 License:        BSD
@@ -68,6 +68,9 @@ rm -rf %{buildroot}%{python3_sitearch}/.pytest_cache
 %{python3_sitearch}/%{modname}*egg-info
 
 %changelog
+* Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.2-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
 * Sat Jun 30 2018 Christian Dersch <lupinix@mailbox.org> - 0.2-4
 - Use PyPI tar and delete the Cythonized code
 
