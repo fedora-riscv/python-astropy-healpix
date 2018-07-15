@@ -4,13 +4,14 @@
 
 Name:           python-%{srcname}
 Version:        0.2
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        %{sum}
 
 License:        BSD
 URL:            https://pypi.python.org/pypi/%{srcname}
 Source0:        https://files.pythonhosted.org/packages/source/a/%{srcname}/%{srcname}-%{version}.tar.gz
 
+BuildRequires:  gcc
 BuildRequires:  python3-astropy
 BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
@@ -68,6 +69,9 @@ rm -rf %{buildroot}%{python3_sitearch}/.pytest_cache
 %{python3_sitearch}/%{modname}*egg-info
 
 %changelog
+* Sun Jul 15 2018 Christian Dersch <lupinix@fedoraproject.org> - 0.2-6
+- BuildRequires: gcc
+
 * Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.2-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
