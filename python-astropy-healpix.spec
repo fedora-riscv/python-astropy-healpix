@@ -3,8 +3,8 @@
 %global sum HEALPix for Astropy
 
 Name:           python-%{srcname}
-Version:        0.2
-Release:        6%{?dist}
+Version:        0.2.1
+Release:        1%{?dist}
 Summary:        %{sum}
 
 License:        BSD
@@ -69,6 +69,9 @@ rm -rf %{buildroot}%{python3_sitearch}/.pytest_cache
 %{python3_sitearch}/%{modname}*egg-info
 
 %changelog
+* Tue Oct 02 2018 Christian Dersch <lupinix@fedoraproject.org> - 0.2.1-1
+- new version
+
 * Sun Jul 15 2018 Christian Dersch <lupinix@fedoraproject.org> - 0.2-6
 - BuildRequires: gcc
 
