@@ -64,7 +64,7 @@ rm -rf %{buildroot}%{python3_sitearch}/.pytest_cache
 # Note that there is no %%files section for the unversioned python module if we are building for several python runtimes
 %files -n python3-%{srcname}
 %license LICENSE.md
-%doc CHANGES.rst README.rst
+%doc README.rst
 %{python3_sitearch}/%{modname}
 %{python3_sitearch}/%{modname}*egg-info
 
