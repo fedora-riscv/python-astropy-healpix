@@ -4,7 +4,7 @@
 
 Name:           python-%{srcname}
 Version:        0.3.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        %{sum}
 
 License:        BSD
@@ -69,6 +69,9 @@ rm -rf %{buildroot}%{python3_sitearch}/.pytest_cache
 %{python3_sitearch}/%{modname}*egg-info
 
 %changelog
+* Sat Feb 02 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Tue Oct 30 2018 Christian Dersch <lupinix.fedora@gmail.com> - 0.3.1-1
 - new version
 
