@@ -4,12 +4,15 @@
 
 Name:           python-%{srcname}
 Version:        0.4
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        %{sum}
 
 License:        BSD
 URL:            https://pypi.python.org/pypi/%{srcname}
 Source0:        https://files.pythonhosted.org/packages/source/a/%{srcname}/%{srcname}-%{version}.tar.gz
+# ref: https://bugzilla.redhat.com/show_bug.cgi?id=1743897
+# ref: https://github.com/spacetelescope/poppy/issues/289
+Patch0:         astropy-healpix-0.4-new-pytest.patch
 
 BuildRequires:  gcc
 BuildRequires:  python3-astropy
@@ -41,7 +44,7 @@ Requires:       python3-matplotlib
 
 
 %prep
-%autosetup -n %{srcname}-%{version}
+%autosetup -n %{srcname}-%{version} -p1
 
 %build
 %py3_build
@@ -65,6 +68,9 @@ rm -rf %{buildroot}%{python3_sitearch}/.pytest_cache
 %{python3_sitearch}/%{modname}*egg-info
 
 %changelog
+* Fri Sep 13 2019 Mamoru TASAKA <mtasaka@fedoraproject.org> - 0.4-4
+- Patch for astropy.tests.pytest_plugins error (bug 1743897)
+
 * Mon Aug 19 2019 Miro Hrončok <mhroncok@redhat.com> - 0.4-3
 - Rebuilt for Python 3.8
 
