@@ -4,7 +4,7 @@
 
 Name:           python-%{srcname}
 Version:        0.4
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        %{sum}
 
 License:        BSD
@@ -53,12 +53,14 @@ Requires:       python3-matplotlib
 %py3_install
 
 %check
+%ifnarch s390x
 pushd %{buildroot}/%{python3_sitearch}
 py.test-%{python3_version} %{modname}
 popd
 # Hypothesis tests creates some files in sitearch... we remove them now
 rm -rf %{buildroot}%{python3_sitearch}/.hypothesis
 rm -rf %{buildroot}%{python3_sitearch}/.pytest_cache
+%endif
 
 # Note that there is no %%files section for the unversioned python module if we are building for several python runtimes
 %files -n python3-%{srcname}
@@ -68,6 +70,9 @@ rm -rf %{buildroot}%{python3_sitearch}/.pytest_cache
 %{python3_sitearch}/%{modname}*egg-info
 
 %changelog
+* Sun Oct 27 2019 Christian Dersch <lupinix@fedoraproject.org> - 0.4-5
+- Disable tests on s90x until numpy is fixed
+
 * Fri Sep 13 2019 Mamoru TASAKA <mtasaka@fedoraproject.org> - 0.4-4
 - Patch for astropy.tests.pytest_plugins error (bug 1743897)
 
