@@ -4,7 +4,7 @@
 
 Name:           python-%{srcname}
 Version:        0.4
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        %{sum}
 
 License:        BSD
@@ -70,6 +70,9 @@ rm -rf %{buildroot}%{python3_sitearch}/.pytest_cache
 %{python3_sitearch}/%{modname}*egg-info
 
 %changelog
+* Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
 * Sun Oct 27 2019 Christian Dersch <lupinix@fedoraproject.org> - 0.4-5
 - Disable tests on s90x until numpy is fixed
 
