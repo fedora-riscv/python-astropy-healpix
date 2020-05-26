@@ -4,7 +4,7 @@
 
 Name:           python-%{srcname}
 Version:        0.4
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        %{sum}
 
 License:        BSD
@@ -70,6 +70,9 @@ rm -rf %{buildroot}%{python3_sitearch}/.pytest_cache
 %{python3_sitearch}/%{modname}*egg-info
 
 %changelog
+* Tue May 26 2020 Miro Hrončok <mhroncok@redhat.com> - 0.4-7
+- Rebuilt for Python 3.9
+
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
