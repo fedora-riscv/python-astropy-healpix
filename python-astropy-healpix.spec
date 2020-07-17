@@ -3,16 +3,13 @@
 %global sum HEALPix for Astropy
 
 Name:           python-%{srcname}
-Version:        0.4
-Release:        7%{?dist}
+Version:        0.5
+Release:        1%{?dist}
 Summary:        %{sum}
 
 License:        BSD
 URL:            https://pypi.python.org/pypi/%{srcname}
 Source0:        https://files.pythonhosted.org/packages/source/a/%{srcname}/%{srcname}-%{version}.tar.gz
-# ref: https://bugzilla.redhat.com/show_bug.cgi?id=1743897
-# ref: https://github.com/spacetelescope/poppy/issues/289
-Patch0:         astropy-healpix-0.4-new-pytest.patch
 
 BuildRequires:  gcc
 BuildRequires:  python3-astropy
@@ -25,7 +22,7 @@ BuildRequires:  python3-healpy
 %endif
 BuildRequires:  python3-hypothesis
 BuildRequires:  python3-matplotlib
-BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-astropy
 
 %description
 This is a BSD-licensed Python package for HEALPix, which is based on the C
@@ -70,6 +67,9 @@ rm -rf %{buildroot}%{python3_sitearch}/.pytest_cache
 %{python3_sitearch}/%{modname}*egg-info
 
 %changelog
+* Fri Jul 17 2020 Christian Dersch <lupinix@fedoraproject.org> - 0.5-1
+- new version
+
 * Tue May 26 2020 Miro Hrončok <mhroncok@redhat.com> - 0.4-7
 - Rebuilt for Python 3.9
 
