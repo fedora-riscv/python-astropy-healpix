@@ -4,7 +4,7 @@
 
 Name:           python-%{srcname}
 Version:        0.5
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        %{sum}
 
 License:        BSD
@@ -67,6 +67,9 @@ rm -rf %{buildroot}%{python3_sitearch}/.pytest_cache
 %{python3_sitearch}/%{modname}*egg-info
 
 %changelog
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.5-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
 * Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.5-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
