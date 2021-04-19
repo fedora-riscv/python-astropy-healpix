@@ -15,6 +15,7 @@ BuildRequires:  gcc
 BuildRequires:  python3-astropy
 BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 # BuildRequires for tests, healpy only available on 64 bit architectures,
 # thus these tests are skipped on 32 bit
 %ifnarch %{ix86} %{arm}
