@@ -3,27 +3,31 @@
 %global sum HEALPix for Astropy
 
 Name:           python-%{srcname}
-Version:        0.5
-Release:        3%{?dist}
+Version:        0.6
+Release:        1%{?dist}
 Summary:        %{sum}
 
 License:        BSD
 URL:            https://pypi.python.org/pypi/%{srcname}
-Source0:        https://files.pythonhosted.org/packages/source/a/%{srcname}/%{srcname}-%{version}.tar.gz
+Source0:        %{pypi_source astropy_healpix}
 
 BuildRequires:  gcc
-BuildRequires:  python3-astropy
-BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools_scm
+BuildRequires:  python3-pip
+BuildRequires:  python3-wheel
+BuildRequires:  %{py3_dist astropy}
+BuildRequires:  %{py3_dist Cython}
+BuildRequires:  %{py3_dist extension-helpers}
 # BuildRequires for tests, healpy only available on 64 bit architectures,
 # thus these tests are skipped on 32 bit
 %ifnarch %{ix86} %{arm}
-BuildRequires:  python3-healpy
+BuildRequires:  %{py3_dist healpy}
 %endif
-BuildRequires:  python3-hypothesis
-BuildRequires:  python3-matplotlib
-BuildRequires:  python3-pytest-astropy
+BuildRequires:  %{py3_dist hypothesis}
+BuildRequires:  %{py3_dist matplotlib}
+BuildRequires:  %{py3_dist pytest-astropy}
 
 %description
 This is a BSD-licensed Python package for HEALPix, which is based on the C
@@ -33,16 +37,16 @@ added here with a Cython wrapper and expanded with a Python interface.
 
 %package -n python3-%{srcname}
 Summary:        %{sum}
-Requires:       python3-astropy
-Requires:       python3-matplotlib
-%{?python_provide:%python_provide python3-%{srcname}}
 
 %description -n python3-%{srcname}
 %{description}
 
 
 %prep
-%autosetup -n %{srcname}-%{version} -p1
+%autosetup -n %{modname}-%{version} -p1
+
+# Remove egg files from source
+rm -r %{modname}.egg-info
 
 %build
 %py3_build
@@ -53,7 +57,7 @@ Requires:       python3-matplotlib
 %check
 %ifnarch s390x
 pushd %{buildroot}/%{python3_sitearch}
-py.test-%{python3_version} %{modname}
+%pytest %{modname}
 popd
 # Hypothesis tests creates some files in sitearch... we remove them now
 rm -rf %{buildroot}%{python3_sitearch}/.hypothesis
@@ -68,6 +72,10 @@ rm -rf %{buildroot}%{python3_sitearch}/.pytest_cache
 %{python3_sitearch}/%{modname}*egg-info
 
 %changelog
+* Sat May 01 2021 Mattia Verga <mattia.verga@protonmail.com> - 0.6-1
+- Upgrade to 0.6
+- Fixes rhbz#1937438
+
 * Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.5-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
