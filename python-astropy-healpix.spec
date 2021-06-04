@@ -4,7 +4,7 @@
 
 Name:           python-%{srcname}
 Version:        0.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        %{sum}
 
 License:        BSD
@@ -72,6 +72,9 @@ rm -rf %{buildroot}%{python3_sitearch}/.pytest_cache
 %{python3_sitearch}/%{modname}*egg-info
 
 %changelog
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 0.6-2
+- Rebuilt for Python 3.10
+
 * Sat May 01 2021 Mattia Verga <mattia.verga@protonmail.com> - 0.6-1
 - Upgrade to 0.6
 - Fixes rhbz#1937438
