@@ -4,7 +4,7 @@
 
 Name:           python-%{srcname}
 Version:        0.6
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        %{sum}
 
 License:        BSD
@@ -72,6 +72,9 @@ rm -rf %{buildroot}%{python3_sitearch}/.pytest_cache
 %{python3_sitearch}/%{modname}*egg-info
 
 %changelog
+* Wed Jun 15 2022 Python Maint <python-maint@redhat.com> - 0.6-5
+- Rebuilt for Python 3.11
+
 * Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.6-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
