@@ -3,8 +3,8 @@
 %global sum HEALPix for Astropy
 
 Name:           python-%{srcname}
-Version:        0.6
-Release:        6%{?dist}
+Version:        0.7
+Release:        1%{?dist}
 Summary:        %{sum}
 
 License:        BSD
@@ -72,6 +72,9 @@ rm -rf %{buildroot}%{python3_sitearch}/.pytest_cache
 %{python3_sitearch}/%{modname}*egg-info
 
 %changelog
+* Fri Sep 16 2022 Christian Dersch <lupinix@mailbox.org> - 0.7-1
+- Update to 0.7
+
 * Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.6-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
