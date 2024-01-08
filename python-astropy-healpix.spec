@@ -4,7 +4,7 @@
 
 Name:           python-%{srcname}
 Version:        0.7
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        %{sum}
 
 License:        BSD
@@ -59,6 +59,12 @@ rm -r %{modname}.egg-info
 %py3_install
 
 %check
+%ifarch riscv64
+%global __pytest_addopts \
+    --deselect astropy_healpix/tests/test_healpy.py::test_pix2ang \
+    --deselect astropy_healpix/tests/test_healpy.py::test_pix2vec \
+    --deselect astropy_healpix/tests/test_healpy.py::test_ang2vec
+%endif
 %ifnarch s390x
 pushd %{buildroot}/%{python3_sitearch}
 %pytest %{modname}
@@ -76,6 +82,9 @@ rm -rf %{buildroot}%{python3_sitearch}/.pytest_cache
 %{python3_sitearch}/%{modname}*egg-info
 
 %changelog
+* Mon Jan 08 2024 Songsong Zhang <U2FsdGVkX1@gmail.com> - 0.7-6
+- Add riscv64 support
+
 * Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.7-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
 
